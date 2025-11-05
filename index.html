@@ -32,6 +32,12 @@
             margin-bottom: 40px;
         }
         
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
         h1 {
             font-size: 2.5em;
             font-weight: 600;
@@ -42,6 +48,22 @@
         .subtitle {
             font-size: 1.1em;
             color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            font-size: 1em;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            transition: border-color 0.2s;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #666;
         }
         
         .regions {
@@ -51,7 +73,7 @@
         
         .region-card {
             background: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             transition: all 0.2s ease;
@@ -66,20 +88,20 @@
         }
         
         .region-card h2 {
-            font-size: 1.6em;
+            font-size: 1.3em;
             color: #1a1a1a;
             margin-bottom: 8px;
         }
         
         .region-card p {
             color: #666;
-            font-size: 1em;
+            font-size: 0.95em;
         }
         
         .arrow {
             float: right;
             color: #999;
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
         
         footer {
@@ -93,11 +115,13 @@
 <body>
     <div class="container">
         <header>
+            <img src="logo.png" alt="Company Logo" class="logo">
             <h1>Tour Package Brochures</h1>
             <p class="subtitle">Browse our collection of European tour packages</p>
+            <input type="text" class="search-box" placeholder="Search brochures by name..." id="searchBox">
         </header>
         
-        <div class="regions">
+        <div class="regions" id="regionsList">
             <a href="uk-ireland/" class="region-card">
                 <span class="arrow">→</span>
                 <h2>UK & Ireland</h2>
@@ -115,5 +139,22 @@
             <p>All brochures are available for download in PDF format</p>
         </footer>
     </div>
+    
+    <script>
+        // Basic search functionality - searches region names and descriptions
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.region-card');
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
