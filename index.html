@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tour Packages - Brochure Library</title>
+    <title>Europe Incoming FIT Packages</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 60px 20px;
         }
@@ -30,25 +30,31 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
         .logo {
-            max-width: 200px;
+            max-width: 180px;
             height: auto;
-            margin-bottom: 20px;
+        }
+        
+        .header-text {
+            text-align: right;
         }
         
         h1 {
-            font-size: 2.5em;
+            font-size: 1.8em;
             font-weight: 600;
             color: #1a1a1a;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .subtitle {
-            font-size: 1.1em;
+            font-size: 1em;
             color: #666;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         
         .search-box {
@@ -59,6 +65,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 6px;
             transition: border-color 0.2s;
+            margin-bottom: 30px;
         }
         
         .search-box:focus {
@@ -66,14 +73,15 @@
             border-color: #666;
         }
         
-        .regions {
+        .categories {
             display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
         
-        .region-card {
+        .category-card {
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             transition: all 0.2s ease;
@@ -82,18 +90,18 @@
             display: block;
         }
         
-        .region-card:hover {
+        .category-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 16px rgba(0,0,0,0.12);
         }
         
-        .region-card h2 {
-            font-size: 1.3em;
+        .category-card h2 {
+            font-size: 1.4em;
             color: #1a1a1a;
             margin-bottom: 8px;
         }
         
-        .region-card p {
+        .category-card p {
             color: #666;
             font-size: 0.95em;
         }
@@ -101,7 +109,7 @@
         .arrow {
             float: right;
             color: #999;
-            font-size: 1.3em;
+            font-size: 1.5em;
         }
         
         footer {
@@ -110,82 +118,57 @@
             color: #999;
             font-size: 0.9em;
         }
+        
+        @media (max-width: 768px) {
+            .categories {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-text {
+                text-align: center;
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="logo.png.png" alt="Company Logo" class="logo">
-            <h1>Tour Package Brochures</h1>
-            <p class="subtitle">Browse our collection of European tour packages</p>
-            <input type="text" class="search-box" placeholder="Search brochures by name..." id="searchBox">
+            <img src="logo.png.png" alt="Europe Incoming Logo" class="logo">
+            <div class="header-text">
+                <h1>Europe Incoming FIT Packages - Global Market</h1>
+            </div>
         </header>
         
-        <div class="regions" id="regionsList">
-            <a href="eastern-europe/" class="region-card">
+        <p class="subtitle">Browse our collection of European tour packages</p>
+        <input type="text" class="search-box" placeholder="Search packages..." id="searchBox">
+        
+        <div class="categories" id="categoriesList">
+            <a href="city-break/" class="category-card">
                 <span class="arrow">→</span>
-                <h2>Eastern Europe</h2>
-                <p>Tour packages covering Eastern European destinations</p>
+                <h2>City Break</h2>
+                <p>Short city getaway packages</p>
             </a>
             
-            <a href="fit-packages/" class="region-card">
+            <a href="multi-country/" class="category-card">
                 <span class="arrow">→</span>
-                <h2>FIT Packages</h2>
-                <p>Free Independent Traveler packages</p>
-            </a>
-            
-            <a href="france/" class="region-card">
-                <span class="arrow">→</span>
-                <h2>France</h2>
-                <p>Tour packages covering France</p>
-            </a>
-            
-            <a href="italy/" class="region-card">
-                <span class="arrow">→</span>
-                <h2>Italy</h2>
-                <p>Tour packages covering Italy</p>
-            </a>
-            
-            <a href="scandinavia-iceland/" class="region-card">
-                <span class="arrow">→</span>
-                <h2>Scandinavia & Iceland</h2>
-                <p>Nordic countries and Iceland tour packages</p>
-            </a>
-            
-            <a href="spain-portugal/" class="region-card">
-                <span class="arrow">→</span>
-                <h2>Spain and Portugal</h2>
-                <p>Iberian Peninsula tour packages</p>
-            </a>
-            
-            <a href="switzerland/" class="region-card">
-                <span class="arrow">→</span>
-                <h2>Switzerland</h2>
-                <p>Swiss Alps and cities tour packages</p>
-            </a>
-            
-            <a href="uk-ireland/" class="region-card">
-                <span class="arrow">→</span>
-                <h2>United Kingdom & Ireland</h2>
-                <p>Tour packages covering UK and Ireland</p>
-            </a>
-            
-            <a href="western-central-europe/" class="region-card">
-                <span class="arrow">→</span>
-                <h2>Western & Central Europe</h2>
-                <p>France, Switzerland, Germany, Benelux, and Italy</p>
+                <h2>Multi-Country Packages</h2>
+                <p>Regional tour packages across Europe</p>
             </a>
         </div>
         
         <footer>
-            <p>All brochures are available for download in PDF format</p>
+            <p>All packages are available for download in PDF format</p>
         </footer>
     </div>
     
     <script>
         document.getElementById('searchBox').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
-            const cards = document.querySelectorAll('.region-card');
+            const cards = document.querySelectorAll('.category-card');
             
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
