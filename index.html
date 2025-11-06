@@ -135,6 +135,46 @@
     </style>
 </head>
 <body>
+    <!-- Geo-blocking Script - Blocks access from India -->
+    <script>
+    (async function() {
+        try {
+            // Check user's location using ipapi.co
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+            
+            // Block if user is in India
+            if (data.country_code === 'IN') {
+                document.body.innerHTML = `
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                        background: #f5f5f5;
+                        color: #1a1a1a;
+                        text-align: center;
+                        padding: 20px;
+                    ">
+                        <h1 style="font-size: 48px; margin-bottom: 16px;">🌍</h1>
+                        <h2 style="font-size: 32px; font-weight: 600; margin-bottom: 12px;">
+                            Service Not Available
+                        </h2>
+                        <p style="font-size: 18px; color: #666; max-width: 500px;">
+                            This service is not available in your region.
+                        </p>
+                    </div>
+                `;
+            }
+        } catch (error) {
+            // If geolocation check fails, allow access
+            console.log('Geolocation check failed, allowing access');
+        }
+    })();
+    </script>
+    
     <div class="container">
         <header>
             <img src="logo.png.png" alt="Europe Incoming Logo" class="logo">
